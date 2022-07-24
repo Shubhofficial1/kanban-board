@@ -82,9 +82,13 @@ function App() {
     },
   ])
 
+  const [target, setTarget] = useState({
+    cid: '',
+    bid: '',
+  })
+
   const addBoard = () => {
     let title = prompt('Please enter the title', 'Untitled')
-
     setBoards([
       ...boards,
       {
@@ -126,6 +130,36 @@ function App() {
     setBoards(tempBoards)
   }
 
+  const handleDragEnd = (cid, bid) => {
+    let s_bIndex, s_cIndex, t_bIndex, t_cIndex
+    s_bIndex = boards?.findIndex((item) => item.id === bid)
+    if (s_bIndex < 0) return
+    s_cIndex = boards[s_bIndex].cards?.findIndex((item) => item.id === cid)
+    if (s_cIndex < 0) return
+    t_bIndex = boards?.findIndex((item) => item.id === target.bid)
+    if (t_bIndex < 0) return
+    t_cIndex = boards[t_bIndex].cards?.findIndex(
+      (item) => item.id === target.cid
+    )
+    if (t_cIndex < 0) return
+    const tempBoards = [...boards]
+    const tempCard = tempBoards[s_bIndex].cards[s_cIndex]
+    tempBoards[s_bIndex].cards?.splice(s_cIndex, 1)
+    tempBoards[t_bIndex].cards?.splice(t_cIndex, 0, tempCard)
+    setBoards(tempBoards)
+    setTarget({
+      bid: '',
+      cid: '',
+    })
+  }
+
+  const handleDragEnter = (cid, bid) => {
+    setTarget({
+      cid: cid,
+      bid: bid,
+    })
+  }
+
   return (
     <div className='App'>
       <Header />
@@ -140,6 +174,8 @@ function App() {
             removeBoard={removeBoard}
             addCard={addCard}
             removeCard={removeCard}
+            handleDragEnter={handleDragEnter}
+            handleDragEnd={handleDragEnd}
           />
         ))}
       </div>

@@ -3,7 +3,15 @@ import './Kanban.css'
 import { MoreHorizontal, Plus } from 'react-feather'
 import Card from '../Card/Card.js'
 import Dropdown from '../Dropdown/Dropdown'
-const Kanban = ({ board, addBoard, removeBoard, addCard, removeCard }) => {
+const Kanban = ({
+  board,
+  // addBoard,
+  removeBoard,
+  addCard,
+  removeCard,
+  handleDragEnter,
+  handleDragEnd,
+}) => {
   const [showBoardDropDown, setShowBoardDropdown] = useState(false)
 
   return (
@@ -49,6 +57,8 @@ const Kanban = ({ board, addBoard, removeBoard, addCard, removeCard }) => {
               card={card}
               bid={board.id}
               removeCard={removeCard}
+              handleDragEnter={handleDragEnter}
+              handleDragEnd={handleDragEnd}
             />
           )
         })}

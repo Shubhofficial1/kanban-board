@@ -4,10 +4,17 @@ import './Card.css'
 import { MoreHorizontal } from 'react-feather'
 import Dropdown from '../Dropdown/Dropdown'
 
-const Card = ({ card, bid, removeCard }) => {
+const Card = ({ card, bid, removeCard, handleDragEnter, handleDragEnd }) => {
   const [showCardDropdown, setShowCardDropdown] = useState(false)
   return (
-    <div className='card_container'>
+    <div
+      className='card_container'
+      draggable
+      onDragEnter={() => handleDragEnter(card.id, bid)}
+      onDragEnd={() => {
+        handleDragEnd(card.id, bid)
+      }}
+    >
       <div key={card.id} className='card noselect'>
         <div className='options'>
           <MoreHorizontal
