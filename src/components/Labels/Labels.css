@@ -1,0 +1,13 @@
+.label {
+  border-radius: 5px;
+  margin-right: 5px;
+  background-color: #abc9ff;
+  padding: 1px 5px;
+  color: white;
+  opacity: 0.8;
+}
+
+.label h1 {
+  font-size: 10px !important;
+  font-weight: 400;
+}

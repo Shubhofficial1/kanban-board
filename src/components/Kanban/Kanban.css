@@ -1,0 +1,52 @@
+.board {
+  min-width: 350px;
+  height: 75vh;
+  margin: 0px 15px;
+  border-radius: 10px;
+}
+
+.board_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.board_header p {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.plus {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  opacity: 0.4;
+  background-color: #ededed;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.plus:hover {
+  opacity: 1;
+}
+
+.board_dropdown {
+  position: relative;
+}
+
+.dot {
+  cursor: pointer;
+}
+
+.dropdown_option {
+  width: 120px;
+  padding: 5px !important;
+  cursor: pointer;
+}
+
+.dropdown_option p {
+  font-size: 10px;
+  font-weight: 500;
+}
